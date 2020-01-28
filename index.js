@@ -1,14 +1,12 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.json())
+
+require('./routes/dialogFlowRoutes')(app);
 
 const port = process.env.PORT || 5000
 
-app.get('/', function(req, res) {
-    res.send('Helloo express!!')
-});
 
-
-app.listen('5000', ()=>{
-    console.log(`app started on port ${port}`)
-})
+app.listen(port)
